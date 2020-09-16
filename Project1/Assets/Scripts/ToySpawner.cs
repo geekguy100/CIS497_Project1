@@ -8,37 +8,38 @@ public class ToySpawner : MonoBehaviour
     public GameObject toy;
 
     //Room dimensions, subject to change
-    private float maxX = 4.5f;
-    private float minX = -4.5f;
-    private float maxZ = 8f;
-    private float minZ = -6f;
-    private float maxY = 5;
+    public float maxX = 4.5f;
+    public float minX = -4.5f;
+    public float maxZ = 8f;
+    public float minZ = -6f;
+    public float maxY = 5;
 
-    int numberOfToys = 0;
-    int maxNumberOfToys = 5;
+    private GameObject[] numberOfToys;
+    public int maxNumberOfToys = 5;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    // counts number of toys in room every frame, if != to max toys, call SpawnToy()
     void Update()
     {
-        if(numberOfToys != maxNumberOfToys)
+
+        numberOfToys = GameObject.FindGameObjectsWithTag("Toy");
+
+        if(numberOfToys.Length != maxNumberOfToys)
         {
             SpawnToy();
         }
     }
 
+    //creates a toy at a random spot in the room
     void SpawnToy()
     {
         Vector3 spawnPosition = new Vector3(Random.Range(minX, maxX), maxY, Random.Range(minZ, maxZ));
 
         Instantiate(toy, spawnPosition, toy.transform.rotation);
 
-        numberOfToys++;
     }
 }

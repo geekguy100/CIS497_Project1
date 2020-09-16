@@ -816,6 +816,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toy: {fileID: 854129211124243162, guid: 610bbfab2f2c158488c0515370bd0bcc, type: 3}
+  maxX: 4.5
+  minX: -4.5
+  maxZ: 8
+  minZ: -6
+  maxY: 5
+  maxNumberOfToys: 5
 --- !u!4 &605399546
 Transform:
   m_ObjectHideFlags: 0
