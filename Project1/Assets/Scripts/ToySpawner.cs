@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/* Frank Calabrese 
+ * Project 2
+ * spawns toys randomly within given coordinates
+ * replaces destroyed toys
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,8 +20,13 @@ public class ToySpawner : MonoBehaviour
     public float minZ = -6f;
     public float maxY = 5;
 
+    //array of # of toys in scene, and the max allowed amount
     private GameObject[] numberOfToys;
     public int maxNumberOfToys = 5;
+
+    //array of possible toy prefabs to spawn
+    //public GameObject[] typesOfToys;
+    //private int toyIndex;
 
     void Start()
     {
@@ -28,8 +39,9 @@ public class ToySpawner : MonoBehaviour
 
         numberOfToys = GameObject.FindGameObjectsWithTag("Toy");
 
-        if(numberOfToys.Length != maxNumberOfToys)
+        if (numberOfToys.Length != maxNumberOfToys)
         {
+            //int toyIndex = Random.Range(0, typesOfToys.Length);
             SpawnToy();
         }
     }
