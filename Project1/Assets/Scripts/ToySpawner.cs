@@ -24,9 +24,9 @@ public class ToySpawner : MonoBehaviour
     private GameObject[] numberOfToys;
     public int maxNumberOfToys = 5;
 
-    //array of possible toy prefabs to spawn
-    //public GameObject[] typesOfToys;
-    //private int toyIndex;
+    //array of possible toys to spawn
+    public GameObject[] typesOfToys;
+    private int toyIndex;
 
     void Start()
     {
@@ -38,10 +38,10 @@ public class ToySpawner : MonoBehaviour
     {
 
         numberOfToys = GameObject.FindGameObjectsWithTag("Toy");
+        
 
         if (numberOfToys.Length != maxNumberOfToys)
         {
-            //int toyIndex = Random.Range(0, typesOfToys.Length);
             SpawnToy();
         }
     }
@@ -49,9 +49,11 @@ public class ToySpawner : MonoBehaviour
     //creates a toy at a random spot in the room
     void SpawnToy()
     {
+        int toyIndex = Random.Range(0, typesOfToys.Length);
+
         Vector3 spawnPosition = new Vector3(Random.Range(minX, maxX), maxY, Random.Range(minZ, maxZ));
 
-        Instantiate(toy, spawnPosition, toy.transform.rotation);
+        Instantiate(typesOfToys[toyIndex], spawnPosition, typesOfToys[toyIndex].transform.rotation);
 
     }
 }

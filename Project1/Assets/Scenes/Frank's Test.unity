@@ -404,10 +404,12 @@ MonoBehaviour:
   maxZ: 11.5
   minZ: -11.5
   maxY: 5
-  typesOfToys:
-  - {fileID: 8158813844559230059, guid: af2482c3a10a243428fb0de5aae4dcfa, type: 3}
-  - {fileID: 854129211124243162, guid: 610bbfab2f2c158488c0515370bd0bcc, type: 3}
   maxNumberOfToys: 5
+  typesOfToys:
+  - {fileID: 1122566565203516765, guid: 3f416d18d5303b94f897e145b9dc2f78, type: 3}
+  - {fileID: 4829342140525552837, guid: 2e8682d48bab4a94ca569955c806667e, type: 3}
+  - {fileID: 8158813844559230059, guid: af2482c3a10a243428fb0de5aae4dcfa, type: 3}
+  - {fileID: 7690433378944426385, guid: bcb3b4a76dd615f4b8792dbef8f2bb17, type: 3}
 --- !u!4 &1968080514
 Transform:
   m_ObjectHideFlags: 0
