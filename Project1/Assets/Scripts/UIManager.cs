@@ -11,49 +11,49 @@ using TMPro;
  * This is the UI Manager that will control the timer as well as the win/loss screens?
  */
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    public float timer = 60;
+    [SerializeField] private float timer = 60f;
     //score won't actually be a float
-    public float score = 0;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreNeededText;
     //public GameManager gameManager;
     //public ScoreManager scoreManager;
-    public bool gameActive = true;
 
     // Start is called before the first frame update
     void Start()
     {
         //gameManager = gameObject.GetComponent<GameManager>();
         //scoreManager = gameObject.GetComponent<ScoreManager>();
+        scoreNeededText.text = "Score Needed: " + ScoreManager.instance.winningScore;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameActive == true)
+        if (!GameManager.instance.GameOver)
+            CountdownTimer();
+    }
+
+    void CountdownTimer()
+    {
+        timer -= Time.deltaTime;
+        //score += Time.deltaTime;
+        timerText.text = "Time: " + timer.ToString("f0");
+        //scoreText.text = "Score: " + score.ToString("f0");
+
+        //Make sure the GameManager knows the timer is over.
+        if (timer <= 0)
         {
-            timer -= Time.deltaTime;
-            score += Time.deltaTime;
-            timerText.text = "Time: " + timer.ToString("f0");
-            scoreText.text = "Score: " + score.ToString("f0");
-            if (timer <= 0)
-            {
-                gameActive = false;
-                timerText.text = "Game Over!\nPress R to Restart.";
-                //gameManager.GameOver = true;
-            }
-            if(score >= 20)
-            {
-                gameActive = false;
-                timerText.text = "You Won!\nPress R to Restart.";
-            }
+            GameManager.instance.GameOver = true;
+            //timerText.text = "Game Over!\nPress R to Restart.";
+            //gameManager.GameOver = true;
         }
-        if (gameActive == false && Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("Restarting...");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+    }
+
+    public void UpdateScore(int s)
+    {
+        scoreText.text = "Score: " + s;
     }
 }
