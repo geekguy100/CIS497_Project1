@@ -10,7 +10,7 @@ using UnityEngine;
 public class ScoreManager : Singleton<ScoreManager>
 {
     //The score the player must achieve in set time to win.
-    [SerializeField] private int winningScore = 20;
+    public int winningScore = 20;
 
     //The high score of the player.
     private int highScore;
@@ -22,10 +22,12 @@ public class ScoreManager : Singleton<ScoreManager>
         set    
         {
             score = value;
-            //TODO: Update UI. UI Manager??
-            Debug.Log("Score: " + score);
-            if (score >= winningScore)
+            UIManager.instance.UpdateScore(score);
+            if (score >= winningScore && !GameManager.instance.GameWon)
                 GameManager.instance.GameWon = true;
+
+            if (score > highScore)
+                Debug.Log("Player has a new highscore of " + score);
         }
     }
 

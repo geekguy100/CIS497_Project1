@@ -10,9 +10,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    //The time the player has to complete the level (in seconds).
-    [SerializeField] private float playTime = 60f;
-
     private bool gameOver = false;
     private bool gameWon = false;
 
@@ -30,27 +27,41 @@ public class GameManager : Singleton<GameManager>
                 ScoreManager.instance.GameOver();
                 //TODO: Update UI. UI Manager??
             }
-            else if (gameWon)
+            else if (gameOver && gameWon)
             {
                 Debug.Log("You win!");
                 ScoreManager.instance.GameOver();
                 //TODO: Update UI. UI Manager??
             }
             else //If GameWon was set to false and not GameOver, make sure gameOver is still updated accordingly.
-                gameOver = false;
+            {
+                gameWon = value;
+            }
+
         }
     }
     public bool GameWon
     {
+        get { return gameWon; }
+
         //Set the gameWon variable.
         //If the game has been won, make sure GameOver is set to true
         //so the appropriate mechanics take place.
         set
         {
             gameWon = value;
-            GameOver = value;
-            if (!gameWon)
+
+            //GameOver = value; 
+            //^^^ Setting this would also make the game end if the game has been won,
+            //but we want the player to keep striving for a high score even after they picked up the 
+            //winning amount of toys.
+            if (gameWon)
+                Debug.Log("Player has reached a winnable score.");
+            else //if gameWon is false, reset GameOver as well.
+            {
+                GameOver = value;
                 Debug.LogWarning("Please don't set GameWon to false by itself; do so my modifying GameOver.");
+            }
         }
     }
 
