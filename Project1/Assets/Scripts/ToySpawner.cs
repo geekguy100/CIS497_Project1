@@ -9,10 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ToySpawner : MonoBehaviour
-{
-
-    public GameObject toy;
-
+{ 
     //Room dimensions, subject to change
     public float maxX = 4.5f;
     public float minX = -4.5f;
