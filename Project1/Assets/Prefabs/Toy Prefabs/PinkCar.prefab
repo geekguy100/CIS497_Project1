@@ -935,9 +935,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8158813844558997579}
   - component: {fileID: 8158813843414209151}
-  - component: {fileID: 8158813843414209120}
   - component: {fileID: 8158813843414209150}
   - component: {fileID: 8158813843414209149}
+  - component: {fileID: 1089490227}
   m_Layer: 11
   m_Name: PinkCar
   m_TagString: Toy
@@ -952,7 +952,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8158813844559230059}
-  m_LocalRotation: {x: -0.01651549, y: -0.0085367765, z: -0.001810889, w: 0.99982554}
+  m_LocalRotation: {x: -0.016512753, y: -0.008534694, z: -0.0018070764, w: 0.99982566}
   m_LocalPosition: {x: 7.2420287, y: 0.8162368, z: -8.290062}
   m_LocalScale: {x: 0.14894, y: 0.14894, z: 0.14894}
   m_Children:
@@ -987,20 +987,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &8158813843414209120
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8158813844559230059}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.0558946
-  m_Height: 4.779051
-  m_Direction: 2
-  m_Center: {x: 0.029469559, y: 0.5658552, z: -0.55881494}
 --- !u!23 &8158813843414209150
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1046,3 +1032,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8158813844559230059}
   m_Mesh: {fileID: 0}
+--- !u!65 &1089490227
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158813844559230059}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4598088, y: 1.4396335, z: 4.801591}
+  m_Center: {x: 0.058491208, y: 0.6715413, z: -0.37333083}
