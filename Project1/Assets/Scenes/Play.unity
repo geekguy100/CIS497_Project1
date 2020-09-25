@@ -257,7 +257,6 @@ MonoBehaviour:
   maxZ: 7
   minZ: -7
   maxY: 4.2
-  maxNumberOfToys: 10
   typesOfToys:
   - {fileID: 1122566565203516765, guid: 3f416d18d5303b94f897e145b9dc2f78, type: 3}
   - {fileID: 4829342140525552837, guid: 2e8682d48bab4a94ca569955c806667e, type: 3}

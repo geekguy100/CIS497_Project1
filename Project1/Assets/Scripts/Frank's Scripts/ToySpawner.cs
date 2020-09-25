@@ -19,7 +19,8 @@ public class ToySpawner : MonoBehaviour
 
     //array of # of toys in scene, and the max allowed amount
     private GameObject[] numberOfToys;
-    public int maxNumberOfToys = 5;
+    private int maxNumberOfToys;
+    private bool doneSpawning = false;
 
     //array of possible toys to spawn
     public GameObject[] typesOfToys;
@@ -27,20 +28,22 @@ public class ToySpawner : MonoBehaviour
 
     void Start()
     {
-        
+        maxNumberOfToys = ScoreManager.instance.winningScore;
     }
 
     // counts number of toys in room every frame, if != to max toys, call SpawnToy()
     void Update()
     {
-
         numberOfToys = GameObject.FindGameObjectsWithTag("Toy");
-        
 
-        if (numberOfToys.Length != maxNumberOfToys)
+
+        if (numberOfToys.Length != maxNumberOfToys && doneSpawning == false)
         {
             SpawnToy();
+
+            if (numberOfToys.Length == maxNumberOfToys) doneSpawning = true;
         }
+
     }
 
     //creates a toy at a random spot in the room
