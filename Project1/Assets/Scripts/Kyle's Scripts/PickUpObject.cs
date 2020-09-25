@@ -25,6 +25,12 @@ public class PickUpObject : MonoBehaviour
     //The key to press to throw an object.
     [SerializeField] private KeyCode throwKey = KeyCode.Mouse0;
 
+    //The key to press to throw an object.
+    //TODO: Code from book states that KeyCode.E should work, and given the conditions that are required to
+    //drop a toy, it should work, but the toy appears to be quickly grabbed again upon dropping it. Maybe add a timer before picking it back up?
+    //For now, I added in another key to drop the toy.
+    [SerializeField] private KeyCode dropKey = KeyCode.Q;
+
     //The amount of force to apply on a thrown object.
     [SerializeField] private float throwForce = 100f;
 
@@ -43,6 +49,9 @@ public class PickUpObject : MonoBehaviour
 
     //The rigidbody that we're holding. Null if we're not holding anything.
     private Rigidbody grabbedRigidbody;
+
+    //LayerMask of interactables.
+    [SerializeField] private LayerMask whatIsToys;
 
 
     private void Awake()
@@ -69,7 +78,7 @@ public class PickUpObject : MonoBehaviour
             AttemptPull();
         }
         //Did the user just press the grab key, and we're holding something?
-        else if (Input.GetKeyDown(grabKey) && grabJoint != null)
+        else if (Input.GetKeyDown(dropKey) && grabJoint != null)
         {
             Drop();
         }
@@ -94,11 +103,11 @@ public class PickUpObject : MonoBehaviour
         //Calculate the force to apply to the object.
         Vector3 force = transform.forward * throwForce;
 
-        //Apply the force to the object.
-        thrownBody.AddForce(force);
-
         //We need to drop the body we're holding before we can throw it.
         Drop();
+
+        //Apply the force to the object.
+        thrownBody.AddForce(force, ForceMode.Impulse);
     }
 
     //Attempts to pull or pick up the object directly ahead of this object.
@@ -113,17 +122,18 @@ public class PickUpObject : MonoBehaviour
         RaycastHit hit;
 
         //Create a layer mask that represents every layer except the player's.
-        var everyLayerButPlayers = ~(1 << LayerMask.NameToLayer("Player"));
+        //var everyLayerButPlayers = ~(1 << LayerMask.NameToLayer("Player"));
 
         //Combine this layer mask with the one that raycasts usually use; this has the effect of
         //removing the Player layer from the list of layers to raycast against.
-        var layerMask = Physics.DefaultRaycastLayers & everyLayerButPlayers;
+        //var layerMask = Physics.DefaultRaycastLayers & everyLayerButPlayers;
 
         //Perform a raycast that uses this layer mask to ignore the player's.
         //We use our pulling range because it's the longest;
         //if the object is actually within our (shorter) grabbing range, we'll grab it instead
         //of pulling it.
-        var hitSomething = Physics.Raycast(ray, out hit, pullingRange, layerMask);
+        //var hitSomething = Physics.Raycast(ray, out hit, pullingRange, layerMask);
+        var hitSomething = Physics.Raycast(ray, out hit, pullingRange, whatIsToys);
 
         if (!hitSomething)
         {
@@ -172,14 +182,19 @@ public class PickUpObject : MonoBehaviour
     private void Drop()
     {
         if (grabJoint != null)
+        {
             Destroy(grabJoint);
+        }
+
 
         //Bail out if the object we are holding isn't there anymore.
         if (grabbedRigidbody == null)
+        {
             return;
+        }
 
         //Re-enable collisions between this object and our collider(s).
-        foreach(var myCollider in GetComponentsInParent<Collider>())
+        foreach (var myCollider in GetComponentsInParent<Collider>())
         {
             Physics.IgnoreCollision(myCollider, grabbedRigidbody.GetComponent<Collider>(), false);
         }

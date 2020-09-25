@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4829342140527753733}
   - component: {fileID: 6059454346776644527}
   - component: {fileID: 3649747107518314537}
-  m_Layer: 0
-  m_Name: GreenBall 1
+  m_Layer: 11
+  m_Name: RedBall
   m_TagString: Toy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

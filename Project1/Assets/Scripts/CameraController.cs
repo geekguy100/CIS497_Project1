@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
