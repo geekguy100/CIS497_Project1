@@ -10,7 +10,15 @@ using UnityEngine;
 public class ScoreManager : Singleton<ScoreManager>
 {
     //The score the player must achieve in set time to win.
-    public int winningScore = 20;
+    private int winningScore = 20;
+    public int WinningScore
+    {
+        get
+        {
+            return winningScore;
+        }
+    }
+
 
     //The high score of the player.
     private int highScore;
