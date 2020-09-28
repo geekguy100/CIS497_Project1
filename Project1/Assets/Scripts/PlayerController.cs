@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Movement();
+        //Can only move once the game starts. Cannot move when it ends.
+        if (GameManager.instance.gameStarted && !GameManager.instance.GameOver)
+            Movement();
     }
 
     private void Movement()

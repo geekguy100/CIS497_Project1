@@ -1,14 +1,11 @@
 /* Frank Calabrese 
  * Project 2
  * spawns toys randomly within given coordinates
- * replaces destroyed toys
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ToySpawner : MonoBehaviour
+public class ToySpawner : Singleton<ToySpawner>
 { 
     //Room dimensions, subject to change
     public float maxX = 4.5f;
@@ -17,37 +14,16 @@ public class ToySpawner : MonoBehaviour
     public float minZ = -6f;
     public float maxY = 5;
 
-    //array of # of toys in scene, and the max allowed amount
-    private GameObject[] numberOfToys;
+    //Current # of toys in scene, and the max allowed amount
+    private int numberOfToys;
     private int maxNumberOfToys;
-    private bool doneSpawning = false;
 
     //array of possible toys to spawn
     public GameObject[] typesOfToys;
     private int toyIndex;
 
-    void Start()
-    {
-        maxNumberOfToys = ScoreManager.instance.WinningScore;
-    }
-
-    // counts number of toys in room every frame, if != to max toys, call SpawnToy()
-    void Update()
-    {
-        numberOfToys = GameObject.FindGameObjectsWithTag("Toy");
-
-
-        if (numberOfToys.Length != maxNumberOfToys && doneSpawning == false)
-        {
-            SpawnToy();
-
-            if (numberOfToys.Length == maxNumberOfToys - 1) doneSpawning = true;
-        }
-
-    }
-
-    //creates a toy at a random spot in the room
-    void SpawnToy()
+    //Spawns a toy at a random spot in the room
+    private void SpawnToy()
     {
         int toyIndex = Random.Range(0, typesOfToys.Length);
 
@@ -55,5 +31,16 @@ public class ToySpawner : MonoBehaviour
 
         Instantiate(typesOfToys[toyIndex], spawnPosition, typesOfToys[toyIndex].transform.rotation);
 
+    }
+
+    //Spawn as much toys as designated in the ScoreManager.
+    public void SpawnToys()
+    {
+        maxNumberOfToys = ScoreManager.instance.WinningScore;
+
+        for (int i = 0; i < maxNumberOfToys; ++i)
+        {
+            SpawnToy();
+        }
     }
 }

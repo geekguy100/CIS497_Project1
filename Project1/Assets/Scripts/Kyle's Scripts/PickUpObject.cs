@@ -71,6 +71,10 @@ public class PickUpObject : MonoBehaviour
 
     private void Update()
     {
+        //Don't run if the game hasn't been started or the game is over.
+        if (!GameManager.instance.gameStarted || GameManager.instance.GameOver)
+            return;
+
         //Is the user holding the grab key, and we're not holding something?
         if (Input.GetKey(grabKey) && grabJoint == null)
         {

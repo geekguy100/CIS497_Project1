@@ -7,11 +7,13 @@
 *****************************************************************************/
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : Singleton<GameManager>
 {
     private bool gameOver = false;
     private bool gameWon = false;
+    public bool gameStarted { get; private set; }
 
     public bool GameOver
     {
@@ -69,10 +71,25 @@ public class GameManager : Singleton<GameManager>
     //Perhabs this should run on scene load? Or maybe when they press a UI button, but the former seems more practical.
     //Before the timer actually starts, there should be a 3 second cooldown before actual gameplay begins, so the players don't instantly spawn into
     //the scene and have to start.
-    public void StartGame()
+    public void Start()
     {
-
+        //On scene load, first spawn toys, make game screen visible, then start timer by making gameStarted = true.
+        StartCoroutine("StartGame");
     }
+
+    private IEnumerator StartGame()
+    {
+        gameStarted = false;
+        ToySpawner.instance.SpawnToys();
+        UIManager.instance.FadePanel();
+        
+        //Wait until the UIManager has finished fading the load panel.
+        while (!UIManager.instance.finishedFading)
+            yield return null;
+
+        gameStarted = true;
+    }
+
 
     private void Update()
     {

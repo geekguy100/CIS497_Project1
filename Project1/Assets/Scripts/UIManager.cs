@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 /*
  * Sam Ferstein
@@ -17,34 +15,70 @@ public class UIManager : Singleton<UIManager>
 
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI scoreNeededText;
+
+    [SerializeField] private Image loadPanel;
+    [SerializeField] private float fadeDuration = 5f;
+    public bool finishedFading { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
+        //Make the loadPanel opaque.
+        Color c = loadPanel.color;
+        c.a = 1;
+        loadPanel.color = c;
+
         UpdateScore(0);
+        timerText.text = "Time: " + timer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.GameOver)
+        if (!GameManager.instance.GameOver && GameManager.instance.gameStarted)
             CountdownTimer();
+    }
+
+    //Made a public function to avoid calling StartCoroutine() in the GameManager.
+    //Makes things look cleaner.
+    public void FadePanel()
+    {
+        StartCoroutine(FadeLoadPanel());
+    }
+
+    private IEnumerator FadeLoadPanel()
+    {
+        finishedFading = false;
+
+        //Create a new color and make it completely opaque.
+        Color c = loadPanel.color;
+
+        Color finishedColor = c;
+        finishedColor.a = 0;
+
+
+        //Fade to transparent over time fadeDuration.
+        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        {
+            float normalizedTime = t / fadeDuration;
+            c.a = Mathf.Lerp(1, 0, normalizedTime * normalizedTime);
+            loadPanel.color = c;
+            yield return null;
+        }
+
+        loadPanel.color = finishedColor;
+        finishedFading = true;
     }
 
     void CountdownTimer()
     {
         timer -= Time.deltaTime;
-        //score += Time.deltaTime;
         timerText.text = "Time: " + timer.ToString("f0");
-        //scoreText.text = "Score: " + score.ToString("f0");
 
-        //Make sure the GameManager knows the timer is over.
+        //Make sure the GameManager knows the timer is over, ending the game.
         if (timer <= 0)
         {
             GameManager.instance.GameOver = true;
-            //timerText.text = "Game Over!\nPress R to Restart.";
-            //gameManager.GameOver = true;
         }
     }
 
