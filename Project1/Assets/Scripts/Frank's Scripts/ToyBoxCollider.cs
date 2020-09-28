@@ -17,5 +17,12 @@ public class ToyBoxCollider : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+
+        if (other.CompareTag("GoldenToy"))
+        {
+            ScoreManager.instance.Score+=2;
+
+            Destroy(other.gameObject);
+        }
     }
 }

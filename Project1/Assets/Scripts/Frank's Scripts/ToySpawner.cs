@@ -41,7 +41,7 @@ public class ToySpawner : MonoBehaviour
         {
             SpawnToy();
 
-            if (numberOfToys.Length == maxNumberOfToys) doneSpawning = true;
+            if (numberOfToys.Length == maxNumberOfToys - 1) doneSpawning = true;
         }
 
     }

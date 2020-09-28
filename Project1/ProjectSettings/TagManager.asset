@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Toy
   - ToyBoxTrigger
+  - GoldenToy
   layers:
   - Default
   - TransparentFX
