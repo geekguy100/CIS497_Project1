@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     //public variables
-    public float gravity = -9.81f;
-    public float speed = 12f;
-    public float groundDistance = .4f;
-    public float jumpHeight = 3f;
+    public float gravity = -20f;
+    public float speed = 10f;
+    public float groundDistance = .3f;
+    public float jumpHeight = 2f;
     public CharacterController Controller;
     public Transform groundCheck;
     public LayerMask groundMask;

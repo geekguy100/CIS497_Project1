@@ -29,6 +29,9 @@ public class ScoreManager : Singleton<ScoreManager>
         get { return score; }
         set    
         {
+            if (GameManager.instance.GameOver)
+                return;
+
             score = value;
             UIManager.instance.UpdateScore(score);
             if (score >= winningScore && !GameManager.instance.GameWon)

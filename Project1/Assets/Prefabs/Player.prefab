@@ -66,10 +66,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
-  gravity: -9.81
-  speed: 12
-  groundDistance: 0.4
-  jumpHeight: 3
+  gravity: -20
+  speed: 10
+  groundDistance: 0.3
+  jumpHeight: 2
   Controller: {fileID: 775453182831546644}
   groundCheck: {fileID: 39359337637404947}
   groundMask:
