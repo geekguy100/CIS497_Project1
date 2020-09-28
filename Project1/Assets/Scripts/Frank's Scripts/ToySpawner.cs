@@ -1,4 +1,4 @@
-﻿/* Frank Calabrese 
+/* Frank Calabrese 
  * Project 2
  * spawns toys randomly within given coordinates
  * replaces destroyed toys
@@ -28,7 +28,7 @@ public class ToySpawner : MonoBehaviour
 
     void Start()
     {
-        maxNumberOfToys = ScoreManager.instance.winningScore;
+        maxNumberOfToys = ScoreManager.instance.WinningScore;
     }
 
     // counts number of toys in room every frame, if != to max toys, call SpawnToy()

@@ -1181,7 +1181,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 496754255}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2148,6 +2148,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1895221224, guid: ba6ddb2e0afcc5e4ba618f6c4d936ecd, type: 3}
+      propertyPath: grabBreakingForce
+      value: 9000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895221224, guid: ba6ddb2e0afcc5e4ba618f6c4d936ecd, type: 3}
+      propertyPath: grabBreakingTorque
+      value: 9000
+      objectReference: {fileID: 0}
     - target: {fileID: 342654678175852173, guid: ba6ddb2e0afcc5e4ba618f6c4d936ecd,
         type: 3}
       propertyPath: m_Name
@@ -2513,7 +2521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813d7cf71fa60de45b1079ad78b1da0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winningScore: 20
 --- !u!4 &1394824362
 Transform:
   m_ObjectHideFlags: 0
@@ -2655,7 +2662,7 @@ MonoBehaviour:
   timer: 60
   timerText: {fileID: 1815226729}
   scoreText: {fileID: 1495489363}
-  scoreNeededText: {fileID: 2005534835}
+  scoreNeededText: {fileID: 0}
 --- !u!4 &1662692169
 Transform:
   m_ObjectHideFlags: 0
@@ -3064,18 +3071,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2098734039}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2005534835 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 958049236311875764, guid: 7efd5898089e9cb4d884d23036cf98ef,
-    type: 3}
-  m_PrefabInstance: {fileID: 2101128232}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2009977184 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: 994ddde667ef84d4caf23f50b4b1d715,

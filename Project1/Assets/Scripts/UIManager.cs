@@ -14,19 +14,15 @@ using TMPro;
 public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private float timer = 60f;
-    //score won't actually be a float
+
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreNeededText;
-    //public GameManager gameManager;
-    //public ScoreManager scoreManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        //gameManager = gameObject.GetComponent<GameManager>();
-        //scoreManager = gameObject.GetComponent<ScoreManager>();
-        scoreNeededText.text = "Score Needed: " + ScoreManager.instance.winningScore;
+        UpdateScore(0);
     }
 
     // Update is called once per frame
@@ -54,6 +50,6 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateScore(int s)
     {
-        scoreText.text = "Score: " + s;
+        scoreText.text = "Score: " + s + "/" + ScoreManager.instance.WinningScore;
     }
 }
