@@ -144,9 +144,9 @@ public class PickUpObject : MonoBehaviour
         //We hit something! Is it something we can pick up?
         grabbedRigidbody = hit.rigidbody;
 
-        if (grabbedRigidbody == null || grabbedRigidbody.isKinematic)
+        if (grabbedRigidbody == null || grabbedRigidbody.isKinematic || !grabbedRigidbody.GetComponent<Toy>().grabbable)
         {
-            //We cannot pick this up; it either has no rigidbody or is kinematic.
+            //We cannot pick this up; it either has no rigidbody or is kinematic or the toy has recently been thrown.
             return;
         }
 
@@ -168,6 +168,9 @@ public class PickUpObject : MonoBehaviour
             //or any collider in our parent, which could cause problems.
             foreach (var myCollider in GetComponentsInParent<Collider>())
                 Physics.IgnoreCollision(myCollider, hit.collider, true);
+
+            //Make sure this toy cannot be grabbed until after it's been thrown.
+            grabbedRigidbody.GetComponent<Toy>().grabbable = false;
         }
         else
         {
@@ -199,6 +202,7 @@ public class PickUpObject : MonoBehaviour
             Physics.IgnoreCollision(myCollider, grabbedRigidbody.GetComponent<Collider>(), false);
         }
 
+        grabbedRigidbody.GetComponent<Toy>().OnToyDrop();
         grabbedRigidbody = null;
     }
 

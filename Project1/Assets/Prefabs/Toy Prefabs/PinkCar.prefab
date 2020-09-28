@@ -938,6 +938,7 @@ GameObject:
   - component: {fileID: 8158813843414209150}
   - component: {fileID: 8158813843414209149}
   - component: {fileID: 1089490227}
+  - component: {fileID: 114399228286380652}
   m_Layer: 11
   m_Name: PinkCar
   m_TagString: Toy
@@ -1045,3 +1046,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4598088, y: 1.4396335, z: 4.801591}
   m_Center: {x: 0.058491208, y: 0.6715413, z: -0.37333083}
+--- !u!114 &114399228286380652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158813844559230059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3025acefa290e1d47854ea3a80401c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbable: 1

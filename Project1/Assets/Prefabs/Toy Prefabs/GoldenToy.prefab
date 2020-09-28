@@ -759,6 +759,7 @@ GameObject:
   - component: {fileID: 618360941407407121}
   - component: {fileID: 618360941407407122}
   - component: {fileID: 618360941407407120}
+  - component: {fileID: 114059328726583246}
   m_Layer: 0
   m_Name: GoldenToy
   m_TagString: GoldenToy
@@ -849,6 +850,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &114059328726583246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618360940342653297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3025acefa290e1d47854ea3a80401c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbable: 1
 --- !u!1 &618360940342653299
 GameObject:
   m_ObjectHideFlags: 0
