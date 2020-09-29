@@ -15,6 +15,10 @@ public class GameManager : Singleton<GameManager>
     private bool gameWon = false;
     public bool gameStarted { get; private set; }
 
+    private AudioSource gameAudio;
+    public AudioClip loseSFX;
+    public AudioClip winSFX;
+
     public bool GameOver
     {
         get { return gameOver; }
@@ -26,12 +30,14 @@ public class GameManager : Singleton<GameManager>
             if (gameOver && !gameWon)
             {
                 Debug.Log("You lose!");
+                gameAudio.PlayOneShot(loseSFX, 1.0f);
                 ScoreManager.instance.GameOver();
                 //TODO: Update UI. UI Manager??
             }
             else if (gameOver && gameWon)
             {
                 Debug.Log("You win!");
+                gameAudio.PlayOneShot(winSFX, 1.0f);
                 ScoreManager.instance.GameOver();
                 //TODO: Update UI. UI Manager??
             }
@@ -82,7 +88,8 @@ public class GameManager : Singleton<GameManager>
         gameStarted = false;
         ToySpawner.instance.SpawnToys();
         UIManager.instance.FadePanel();
-        
+        gameAudio = GetComponent<AudioSource>();
+
         //Wait until the UIManager has finished fading the load panel.
         while (!UIManager.instance.finishedFading)
             yield return null;

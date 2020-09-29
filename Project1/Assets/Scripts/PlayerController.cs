@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float moveVertical;
     public Vector3 velocity;
     private bool isGrounded;
+    private AudioSource playerAudio;
 
     //public variables
     public float gravity = -20f;
@@ -19,7 +20,14 @@ public class PlayerController : MonoBehaviour
     public CharacterController Controller;
     public Transform groundCheck;
     public LayerMask groundMask;
+    public AudioClip jumpSFX;
+    public AudioClip bgMusic;
 
+    private void Start()
+    {
+        playerAudio = GetComponent<AudioSource>();
+        playerAudio.PlayOneShot(bgMusic, 1.0f);
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -52,6 +60,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            playerAudio.PlayOneShot(jumpSFX, 1.0f);
         }
 
         //Pulls the player back down to the ground using gravity
