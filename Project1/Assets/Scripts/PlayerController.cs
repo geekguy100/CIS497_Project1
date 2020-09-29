@@ -35,6 +35,11 @@ public class PlayerController : MonoBehaviour
         //Can only move once the game starts. Cannot move when it ends.
         if (GameManager.instance.gameStarted && !GameManager.instance.GameOver)
             Movement();
+
+        if (GameManager.instance.GameOver)
+        {
+            playerAudio.Stop();
+        }
     }
 
     private void Movement()
