@@ -17,6 +17,7 @@ public class ToySpawner : Singleton<ToySpawner>
     //Current # of toys in scene, and the max allowed amount
     private int numberOfToys;
     private int maxNumberOfToys;
+    private GameObject[] countToys;
 
     //array of possible toys to spawn
     public GameObject[] typesOfToys;
@@ -40,7 +41,21 @@ public class ToySpawner : Singleton<ToySpawner>
 
         for (int i = 0; i < maxNumberOfToys; ++i)
         {
+
             SpawnToy();
+        }
+
+        CheckToys();
+    }
+
+    public void CheckToys()
+    {
+       countToys = GameObject.FindGameObjectsWithTag("Toy");
+
+        for (int i = countToys.Length -1; i < maxNumberOfToys; ++i)
+        {
+            SpawnToy();
+            ScoreManager.instance.Score--;
         }
     }
 }
