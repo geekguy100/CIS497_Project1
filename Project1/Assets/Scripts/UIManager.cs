@@ -15,6 +15,10 @@ public class UIManager : Singleton<UIManager>
 
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI movementTutorial;
+    public TextMeshProUGUI grabbingTutorial;
+    public TextMeshProUGUI throwingTutorial;
+    public TextMeshProUGUI goalTutorial;
 
     [SerializeField] private Image loadPanel;
     [SerializeField] private float fadeDuration = 5f;
@@ -30,6 +34,12 @@ public class UIManager : Singleton<UIManager>
 
         UpdateScore(0);
         timerText.text = "Time: " + timer;
+
+        movementTutorial.enabled = true;
+        grabbingTutorial.enabled = false;
+        throwingTutorial.enabled = false;
+        goalTutorial.enabled = false;
+        Tutorial();
     }
 
     // Update is called once per frame
@@ -74,7 +84,7 @@ public class UIManager : Singleton<UIManager>
     {
         timer -= Time.deltaTime;
         timerText.text = "Time: " + timer.ToString("f0");
-
+        
         //Make sure the GameManager knows the timer is over, ending the game.
         if (timer <= 0)
         {
@@ -85,5 +95,28 @@ public class UIManager : Singleton<UIManager>
     public void UpdateScore(int s)
     {
         scoreText.text = "Score: " + s + "/" + ScoreManager.instance.WinningScore;
+    }
+
+    public void Tutorial()
+    {
+        StartCoroutine(TutorialMessage());
+    }
+
+    private IEnumerator TutorialMessage()
+    {
+        yield return new WaitForSeconds(10);
+        movementTutorial.enabled = false;
+        grabbingTutorial.enabled = true;
+
+        yield return new WaitForSeconds(10);
+        grabbingTutorial.enabled = false;
+        throwingTutorial.enabled = true;
+
+        yield return new WaitForSeconds(10);
+        throwingTutorial.enabled = false;
+        goalTutorial.enabled = true;
+
+        yield return new WaitForSeconds(10);
+        goalTutorial.enabled = false;
     }
 }
