@@ -19,6 +19,8 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI grabbingTutorial;
     public TextMeshProUGUI throwingTutorial;
     public TextMeshProUGUI goalTutorial;
+    [SerializeField] private GameObject loseText;
+    [SerializeField] private GameObject winText;
 
     [SerializeField] private Image loadPanel;
     [SerializeField] private float fadeDuration = 5f;
@@ -122,5 +124,15 @@ public class UIManager : Singleton<UIManager>
 
         yield return new WaitForSeconds(10);
         goalTutorial.enabled = false;
+    }
+
+    public void OnGameWin()
+    {
+        winText.SetActive(true);
+    }
+
+    public void OnGameLose()
+    {
+        loseText.SetActive(true);
     }
 }

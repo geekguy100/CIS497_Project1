@@ -15,8 +15,6 @@ public class GameManager : Singleton<GameManager>
     private bool gameOver = false;
     private bool gameWon = false;
     public bool gameStarted { get; private set; }
-    public TextMeshProUGUI winText;
-    public TextMeshProUGUI loseText;
 
     private AudioSource gameAudio;
     public AudioClip loseSFX;
@@ -33,18 +31,16 @@ public class GameManager : Singleton<GameManager>
             if (gameOver && !gameWon)
             {
                 Debug.Log("You lose!");
-                loseText.enabled = true;
                 gameAudio.PlayOneShot(loseSFX, 1.0f);
                 ScoreManager.instance.GameOver();
-                //TODO: Update UI. UI Manager??
+                UIManager.instance.OnGameLose();
             }
             else if (gameOver && gameWon)
             {
                 Debug.Log("You win!");
-                winText.enabled = true;
                 gameAudio.PlayOneShot(winSFX, 1.0f);
                 ScoreManager.instance.GameOver();
-                //TODO: Update UI. UI Manager??
+                UIManager.instance.OnGameWin();
             }
             else //If GameWon was set to false and not GameOver, make sure gameOver is still updated accordingly.
             {
