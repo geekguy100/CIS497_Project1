@@ -22,6 +22,7 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField] private Image loadPanel;
     [SerializeField] private float fadeDuration = 5f;
+    [SerializeField] private bool tutorial = false;
     public bool finishedFading { get; private set; }
 
     // Start is called before the first frame update
@@ -35,11 +36,14 @@ public class UIManager : Singleton<UIManager>
         UpdateScore(0);
         timerText.text = "Time: " + timer;
 
-        movementTutorial.enabled = true;
-        grabbingTutorial.enabled = false;
-        throwingTutorial.enabled = false;
-        goalTutorial.enabled = false;
-        Tutorial();
+        if (tutorial)
+        {
+            movementTutorial.enabled = true;
+            grabbingTutorial.enabled = false;
+            throwingTutorial.enabled = false;
+            goalTutorial.enabled = false;
+            Tutorial();
+        }
     }
 
     // Update is called once per frame

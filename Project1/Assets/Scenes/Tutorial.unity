@@ -3327,6 +3327,7 @@ MonoBehaviour:
   goalTutorial: {fileID: 285440035}
   loadPanel: {fileID: 1122843077}
   fadeDuration: 3.5
+  tutorial: 1
 --- !u!4 &1130185661
 Transform:
   m_ObjectHideFlags: 0
