@@ -19,6 +19,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Don't run if the game hasn't started or has ended.
+        if (!GameManager.instance.gameStarted || GameManager.instance.GameOver)
+            return;
+
         mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
