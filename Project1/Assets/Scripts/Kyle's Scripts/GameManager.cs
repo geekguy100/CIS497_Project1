@@ -91,10 +91,15 @@ public class GameManager : Singleton<GameManager>
         UIManager.instance.FadePanel();
         gameAudio = GetComponent<AudioSource>();
 
-        //Wait until the UIManager has finished fading the load panel.
+        //Wait until the UIManager has finished fading the load panel, check toys in meantime.
         while (!UIManager.instance.finishedFading)
+        {
+            ToySpawner.instance.CheckToys();
             yield return null;
+        }
+            
 
+        
         gameStarted = true;
     }
 
