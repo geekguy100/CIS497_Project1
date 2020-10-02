@@ -29,7 +29,7 @@ public class GameManager : Singleton<GameManager>
     {
         get { return gameOver; }
         //Set the gameOver value.
-        //If gameOver and the player didn't win, 
+        //If gameOver and the player didn't win,
         set
         {
             gameOver = value;
@@ -65,9 +65,9 @@ public class GameManager : Singleton<GameManager>
         {
             gameWon = value;
 
-            //GameOver = value; 
+            //GameOver = value;
             //^^^ Setting this would also make the game end if the game has been won,
-            //but we want the player to keep striving for a high score even after they picked up the 
+            //but we want the player to keep striving for a high score even after they picked up the
             //winning amount of toys.
             if (gameWon)
                 Debug.Log("Player has reached a winnable score.");
@@ -102,10 +102,6 @@ public class GameManager : Singleton<GameManager>
             ToySpawner.instance.CheckToys();
             yield return null;
         }
-            
-
-        
-        gameStarted = true;
     }
 
     private void Update()

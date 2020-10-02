@@ -19,7 +19,6 @@ public class UIManager : Singleton<UIManager>
     [Header("Tutorial Assets")]
     public TextMeshProUGUI movementTutorial;
     public TextMeshProUGUI grabbingTutorial;
-    public TextMeshProUGUI throwingTutorial;
     public TextMeshProUGUI goalTutorial;
     [SerializeField] private bool tutorial = false;
 
@@ -36,6 +35,12 @@ public class UIManager : Singleton<UIManager>
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.instance.gameStarted = false;
+        loseScreen.SetActive(false);
+        winScreen.SetActive(false);
+        tutorialScreen.SetActive(true);
+        tutorial = true;
+
         //Make the loadPanel opaque.
         Color c = loadPanel.color;
         c.a = 1;
@@ -48,7 +53,6 @@ public class UIManager : Singleton<UIManager>
         {
             movementTutorial.enabled = true;
             grabbingTutorial.enabled = false;
-            throwingTutorial.enabled = false;
             goalTutorial.enabled = false;
             Tutorial();
         }
@@ -106,7 +110,7 @@ public class UIManager : Singleton<UIManager>
     {
         timer -= Time.deltaTime;
         timerText.text = "Time: " + timer.ToString("f0");
-        
+
         //Make sure the GameManager knows the timer is over, ending the game.
         if (timer <= 0)
         {
@@ -132,24 +136,22 @@ public class UIManager : Singleton<UIManager>
 
         yield return new WaitForSeconds(10);
         grabbingTutorial.enabled = false;
-        throwingTutorial.enabled = true;
-
-        yield return new WaitForSeconds(10);
-        throwingTutorial.enabled = false;
         goalTutorial.enabled = true;
 
         yield return new WaitForSeconds(10);
         goalTutorial.enabled = false;
+        tutorialScreen.SetActive(false);
+        GameManager.instance.gameStarted = true;
     }
 
     public void OnGameWin()
     {
-        winText.SetActive(true);
+        winScreen.SetActive(true);
     }
 
     public void OnGameLose()
     {
-        loseText.SetActive(true);
+        loseScreen.SetActive(true);
     }
 
     public void PauseGame(bool paused)
