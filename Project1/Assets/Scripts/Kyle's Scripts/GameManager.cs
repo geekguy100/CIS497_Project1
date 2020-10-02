@@ -1,6 +1,6 @@
 /*****************************************************************************
 // File Name :         GameManager.cs
-// Author :            Kyle Grenier
+// Author :            Kyle Grenier, Chris Smith
 // Creation Date :     September 21, 2020
 //
 // Brief Description : Script to manage the state of the game.

@@ -4,7 +4,7 @@ using TMPro;
 using System.Collections;
 
 /*
- * Sam Ferstein
+ * Sam Ferstein, Chris Smith
  * Project 1
  * This is the UI Manager that will control the timer as well as the win/loss screens?
  */

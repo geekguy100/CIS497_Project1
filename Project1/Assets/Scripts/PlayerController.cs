@@ -1,3 +1,9 @@
+/*
+ * Chandler Wesoloski, Chris Smith
+ * Project 1+2
+ * Controls player movement
+ */ 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

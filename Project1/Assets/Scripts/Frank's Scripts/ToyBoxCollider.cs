@@ -1,4 +1,4 @@
-/*Frank Calabrese  
+/*Frank Calabrese, Chris Smith  
  * Increments score in ScoreManager script 
  * when toy is thrown in toybox
  */
