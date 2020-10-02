@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
 {
     private bool gameOver = false;
     private bool gameWon = false;
-    public bool gameStarted { get; private set; }
+    public bool gameStarted = false;
 
     private AudioSource gameAudio;
     public AudioClip loseSFX;
@@ -97,10 +97,6 @@ public class GameManager : Singleton<GameManager>
             ToySpawner.instance.CheckToys();
             yield return null;
         }
-            
-
-        
-        gameStarted = true;
     }
 
 

@@ -17,10 +17,10 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI movementTutorial;
     public TextMeshProUGUI grabbingTutorial;
-    public TextMeshProUGUI throwingTutorial;
     public TextMeshProUGUI goalTutorial;
-    [SerializeField] private GameObject loseText;
-    [SerializeField] private GameObject winText;
+    [SerializeField] private GameObject loseScreen;
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject tutorialScreen;
 
     [SerializeField] private Image loadPanel;
     [SerializeField] private float fadeDuration = 5f;
@@ -30,6 +30,12 @@ public class UIManager : Singleton<UIManager>
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.instance.gameStarted = false;
+        loseScreen.SetActive(false);
+        winScreen.SetActive(false);
+        tutorialScreen.SetActive(true);
+        tutorial = true;
+
         //Make the loadPanel opaque.
         Color c = loadPanel.color;
         c.a = 1;
@@ -42,7 +48,6 @@ public class UIManager : Singleton<UIManager>
         {
             movementTutorial.enabled = true;
             grabbingTutorial.enabled = false;
-            throwingTutorial.enabled = false;
             goalTutorial.enabled = false;
             Tutorial();
         }
@@ -116,23 +121,21 @@ public class UIManager : Singleton<UIManager>
 
         yield return new WaitForSeconds(10);
         grabbingTutorial.enabled = false;
-        throwingTutorial.enabled = true;
-
-        yield return new WaitForSeconds(10);
-        throwingTutorial.enabled = false;
         goalTutorial.enabled = true;
 
         yield return new WaitForSeconds(10);
         goalTutorial.enabled = false;
+        tutorialScreen.SetActive(false);
+        GameManager.instance.gameStarted = true;
     }
 
     public void OnGameWin()
     {
-        winText.SetActive(true);
+        winScreen.SetActive(true);
     }
 
     public void OnGameLose()
     {
-        loseText.SetActive(true);
+        loseScreen.SetActive(true);
     }
 }
