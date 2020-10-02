@@ -8,17 +8,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
     private bool gameOver = false;
     private bool gameWon = false;
     public bool gameStarted { get; private set; }
+    private bool paused = false;
 
-    private AudioSource gameAudio;
+    [Header("Input")]
+    [SerializeField] private KeyCode restartKey = KeyCode.R;
+    [SerializeField] private KeyCode pauseKey = KeyCode.Escape;
+
+    [Header("Audio")]
     public AudioClip loseSFX;
     public AudioClip winSFX;
+    private AudioSource gameAudio;
 
     public bool GameOver
     {
@@ -103,22 +108,46 @@ public class GameManager : Singleton<GameManager>
         gameStarted = true;
     }
 
-
     private void Update()
     {
         //TODO: Implement a restart feature upon winning or losing the game.
         //Do we want the game to go back to the main menu, a level selection screen, or just restart the current scene?
         //For now, I made it restart the current scene.
-        if (gameOver && Input.GetKeyDown(KeyCode.R))
+        if (gameOver && Input.GetKeyDown(restartKey))
         {
             Debug.Log("Restarting...");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if (!gameOver)
         {
-            //DEBUG: Increase score on key press.
-            if (Input.GetKeyUp(KeyCode.P))
-                ScoreManager.instance.Score++;
+            //Enable pausing the game if the game is not over.
+            if (Input.GetKeyDown(pauseKey) && gameStarted)
+                PauseGame();
         }
+    }
+
+    public void PauseGame()
+    {
+        if (!paused)
+        {
+            paused = true;
+            UIManager.instance.PauseGame(paused);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            paused = false;
+            UIManager.instance.PauseGame(paused);
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+    }
+
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Main Menu");
     }
 }

@@ -11,20 +11,26 @@ using System.Collections;
 
 public class UIManager : Singleton<UIManager>
 {
+    [Header("Timer Assets")]
     [SerializeField] private float timer = 60f;
-
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
+
+    [Header("Tutorial Assets")]
     public TextMeshProUGUI movementTutorial;
     public TextMeshProUGUI grabbingTutorial;
     public TextMeshProUGUI throwingTutorial;
     public TextMeshProUGUI goalTutorial;
+    [SerializeField] private bool tutorial = false;
+
+    [Header("Game Status Text")]
     [SerializeField] private GameObject loseText;
     [SerializeField] private GameObject winText;
+    [SerializeField] private GameObject pauseMenu;
 
+    [Header("Fading Assets")]
     [SerializeField] private Image loadPanel;
     [SerializeField] private float fadeDuration = 5f;
-    [SerializeField] private bool tutorial = false;
     public bool finishedFading { get; private set; }
 
     // Start is called before the first frame update
@@ -57,33 +63,43 @@ public class UIManager : Singleton<UIManager>
 
     //Made a public function to avoid calling StartCoroutine() in the GameManager.
     //Makes things look cleaner.
-    public void FadePanel()
+    //Reverse = true if panel should fade from transparent to opaque.
+    //If fadeDur = 0, set fade duration to UIManager's fadeDuration.
+    public void FadePanel(bool reverse = false, float fadeDur = 0f)
     {
-        StartCoroutine(FadeLoadPanel());
+        if (fadeDur == 0)
+            fadeDur = fadeDuration;
+
+        StartCoroutine(FadeLoadPanel(reverse, fadeDur));
     }
 
-    private IEnumerator FadeLoadPanel()
+    private IEnumerator FadeLoadPanel(bool reverse, float fadeDur)
     {
+        loadPanel.gameObject.SetActive(true);
         finishedFading = false;
 
-        //Create a new color and make it completely opaque.
+        //Create a new color.
         Color c = loadPanel.color;
+        int finishedAlpha = 0;
+        int startingAlpha = 1;
 
-        Color finishedColor = c;
-        finishedColor.a = 0;
-
+        if (reverse)
+        {
+            finishedAlpha = 1;
+            startingAlpha = 0;
+        }
 
         //Fade to transparent over time fadeDuration.
-        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        for (float t = 0; t < fadeDur; t += Time.deltaTime)
         {
-            float normalizedTime = t / fadeDuration;
-            c.a = Mathf.Lerp(1, 0, normalizedTime * normalizedTime);
+            float normalizedTime = t / fadeDur;
+            c.a = Mathf.Lerp(startingAlpha, finishedAlpha, normalizedTime * normalizedTime);
             loadPanel.color = c;
             yield return null;
         }
 
-        loadPanel.color = finishedColor;
         finishedFading = true;
+        loadPanel.gameObject.SetActive(false);
     }
 
     void CountdownTimer()
@@ -134,5 +150,13 @@ public class UIManager : Singleton<UIManager>
     public void OnGameLose()
     {
         loseText.SetActive(true);
+    }
+
+    public void PauseGame(bool paused)
+    {
+        if (paused)
+            pauseMenu.SetActive(true);
+        else
+            pauseMenu.SetActive(false);
     }
 }

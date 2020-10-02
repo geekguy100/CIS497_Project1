@@ -14,6 +14,8 @@ using UnityEngine;
 //Singleton class taken from 'Unity Game Development Cookbook' (Buttfield-Addison, Manning, Nugent)
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
+    public bool isEnabled { get; private set; }
+
     public static T instance{
         get {
             //If we don't have an instance ready, get one by either finding it in the scene or creating one.
@@ -34,14 +36,17 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         //Check to see if there are already multiple instances.
         //If so, destroy all but one.
         T[] clones = FindObjectsOfType<T>();
-        int i;
-        for (i = 1; i < clones.Length; ++i)
+
+        for (int i = 0; i < clones.Length; ++i)
         {
-            Destroy(clones[i]);
+            //If a gameObject of type T is found and is enabled, meaning it is the original, 
+            //destroy this game object because it's a clone.
+            if (clones[i].GetComponent<Singleton<T>>().isEnabled)
+                Destroy(gameObject);
         }
 
-        if (i > 1)
-            Debug.LogWarning("Destroyed " + (i - 1) + " copies of type " + GetType());
+        //No game objects of type T were found to be enabled, so make yourself the original.
+        isEnabled = true;
     }
 
     //This variable is the actual instance. 
