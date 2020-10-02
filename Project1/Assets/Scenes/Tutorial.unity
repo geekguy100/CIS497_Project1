@@ -2736,7 +2736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225023064, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 225023065, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_Enabled
@@ -2784,7 +2784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 285981023, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 285981024, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_Sprite
@@ -2792,7 +2792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 517433706, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1084811421, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_IsActive
@@ -3351,10 +3351,10 @@ MonoBehaviour:
   timer: 60
   timerText: {fileID: 1021941013}
   scoreText: {fileID: 1021941012}
-  movementTutorial: {fileID: 0}
-  grabbingTutorial: {fileID: 0}
-  throwingTutorial: {fileID: 0}
-  goalTutorial: {fileID: 0}
+  movementTutorial: {fileID: 615478275}
+  grabbingTutorial: {fileID: 1310268673}
+  goalTutorial: {fileID: 285440035}
+  throwingTutorial: {fileID: 695643476}
   tutorial: 1
   loseText: {fileID: 1746262699}
   winText: {fileID: 1145869539}

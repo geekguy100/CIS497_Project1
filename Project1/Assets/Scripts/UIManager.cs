@@ -20,6 +20,7 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI movementTutorial;
     public TextMeshProUGUI grabbingTutorial;
     public TextMeshProUGUI goalTutorial;
+    [SerializeField] private TextMeshProUGUI throwingTutorial;
     [SerializeField] private bool tutorial = false;
 
     [Header("Game Status Text")]
@@ -35,12 +36,6 @@ public class UIManager : Singleton<UIManager>
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.instance.gameStarted = false;
-        loseScreen.SetActive(false);
-        winScreen.SetActive(false);
-        tutorialScreen.SetActive(true);
-        tutorial = true;
-
         //Make the loadPanel opaque.
         Color c = loadPanel.color;
         c.a = 1;
@@ -53,7 +48,9 @@ public class UIManager : Singleton<UIManager>
         {
             movementTutorial.enabled = true;
             grabbingTutorial.enabled = false;
+            throwingTutorial.enabled = false;
             goalTutorial.enabled = false;
+            timerText.SetText("Time: INF");
             Tutorial();
         }
     }
@@ -61,7 +58,8 @@ public class UIManager : Singleton<UIManager>
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.GameOver && GameManager.instance.gameStarted)
+        //Don't use timer in the tutorial.
+        if (!tutorial && !GameManager.instance.GameOver && GameManager.instance.gameStarted)
             CountdownTimer();
     }
 
@@ -136,22 +134,24 @@ public class UIManager : Singleton<UIManager>
 
         yield return new WaitForSeconds(10);
         grabbingTutorial.enabled = false;
+        throwingTutorial.enabled = true;
+
+        yield return new WaitForSeconds(10);
+        throwingTutorial.enabled = false;
         goalTutorial.enabled = true;
 
         yield return new WaitForSeconds(10);
         goalTutorial.enabled = false;
-        tutorialScreen.SetActive(false);
-        GameManager.instance.gameStarted = true;
     }
 
     public void OnGameWin()
     {
-        winScreen.SetActive(true);
+        winText.SetActive(true);
     }
 
     public void OnGameLose()
     {
-        loseScreen.SetActive(true);
+        loseText.SetActive(true);
     }
 
     public void PauseGame(bool paused)

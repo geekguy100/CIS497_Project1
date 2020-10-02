@@ -102,6 +102,8 @@ public class GameManager : Singleton<GameManager>
             ToySpawner.instance.CheckToys();
             yield return null;
         }
+
+        gameStarted = true;
     }
 
     private void Update()
