@@ -2,7 +2,7 @@
 // File Name :         Singleton.cs
 // Author :            Buttfield-Addison, Manning, Nugent
 // Creation Date :     09/04/2020
-//
+// Assignment:         Project 2 - CIS 497
 // Brief Description : A class that enables a script to have a singleton behaviour. 
                        Such a script should derive from Singleton<T> instead of MonoBehaviour.
                        

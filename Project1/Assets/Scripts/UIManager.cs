@@ -4,9 +4,9 @@ using TMPro;
 using System.Collections;
 
 /*
- * Sam Ferstein, Chris Smith
+ * Sam Ferstein, Chris Smith, Kyle Grenier
  * Project 1
- * This is the UI Manager that will control the timer as well as the win/loss screens?
+ * A UI Manager that handles displaying text and keeping track of the in-game timer.
  */
 
 public class UIManager : Singleton<UIManager>

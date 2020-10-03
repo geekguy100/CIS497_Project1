@@ -2,7 +2,7 @@
 // File Name :         MenuController.cs
 // Author :            Kyle Grenier
 // Creation Date :     October 01, 2020
-//
+// Assignment:         Project 2 - CIS 497
 // Brief Description : Enables use of UI buttons to navigate scenes.
 *****************************************************************************/
 using UnityEngine;

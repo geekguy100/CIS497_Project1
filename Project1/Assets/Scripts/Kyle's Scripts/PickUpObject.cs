@@ -2,7 +2,7 @@
 // File Name :         PickUpObject.cs
 // Author :            Kyle Grenier
 // Creation Date :     9/16/2020
-//
+// Assignment:         Project 2 - CIS 497
 // NOTE:               Code taken from class textbook.
 // Brief Description : Enables the player to pick up objects in range.
 *****************************************************************************/

@@ -2,7 +2,7 @@
 // File Name :         GameManager.cs
 // Author :            Kyle Grenier, Chris Smith
 // Creation Date :     September 21, 2020
-//
+// Assignment:         Project 2 - CIS 497
 // Brief Description : Script to manage the state of the game.
 *****************************************************************************/
 using UnityEngine;

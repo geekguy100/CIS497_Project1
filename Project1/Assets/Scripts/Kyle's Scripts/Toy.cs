@@ -2,7 +2,7 @@
 // File Name :         Toy.cs
 // Author :            Kyle Grenier
 // Creation Date :     September 28, 2020
-//
+// Assignment:         Project 2 - CIS 497
 // Brief Description : A small script that determines whether or not a toy can be picked up.
                        Can be picked up if it has touched the ground after being thrown recently.
 *****************************************************************************/

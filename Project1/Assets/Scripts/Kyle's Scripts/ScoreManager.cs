@@ -2,7 +2,7 @@
 // File Name :         ScoreManager.cs
 // Author :            Kyle Grenier
 // Creation Date :     September 21, 2020
-//
+// Assignment:         Project 2 - CIS 497
 // Brief Description : Script to handle accumulating and managing the score.
 *****************************************************************************/
 using UnityEngine;
