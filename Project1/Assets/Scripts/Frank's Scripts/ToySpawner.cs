@@ -15,7 +15,6 @@ public class ToySpawner : Singleton<ToySpawner>
     public float maxY = 5;
 
     //Current # of toys in scene, and the max allowed amount
-    private int numberOfToys;
     private int maxNumberOfToys = 20;
     private GameObject[] countToys;
 
@@ -28,7 +27,7 @@ public class ToySpawner : Singleton<ToySpawner>
     //Spawns a toy at a random spot in the room
     private void SpawnToy()
     {
-        int toyIndex = Random.Range(0, typesOfToys.Length);
+        toyIndex = Random.Range(0, typesOfToys.Length);
 
         Vector3 spawnPosition = new Vector3(Random.Range(minX, maxX), maxY, Random.Range(minZ, maxZ));
 
@@ -36,7 +35,7 @@ public class ToySpawner : Singleton<ToySpawner>
 
     }
 
-    //Spawn as much toys as designated in the ScoreManager.
+    //Spawn as many toys as designated in the ScoreManager
     public void SpawnToys()
     {
         maxNumberOfToys = ScoreManager.instance.WinningScore;
@@ -48,7 +47,7 @@ public class ToySpawner : Singleton<ToySpawner>
 
     }
 
-    //replaces any toys spawned in toybox, and decrements score
+    //replaces any toys spawned in the toybox during startup, and decrements score accordingly
     public void CheckToys()
     {
        countToys = GameObject.FindGameObjectsWithTag("Toy");

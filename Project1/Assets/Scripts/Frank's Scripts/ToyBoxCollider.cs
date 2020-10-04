@@ -1,4 +1,5 @@
 /*Frank Calabrese, Chris Smith  
+ * Project 2
  * Increments score in ScoreManager script 
  * when toy is thrown in toybox
  */
