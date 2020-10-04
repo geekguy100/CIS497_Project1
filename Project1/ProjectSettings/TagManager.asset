@@ -7,7 +7,6 @@ TagManager:
   - Toy
   - ToyBoxTrigger
   - GoldenToy
-  - Roomba
   layers:
   - Default
   - TransparentFX
