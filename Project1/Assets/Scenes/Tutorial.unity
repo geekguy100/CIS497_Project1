@@ -1924,6 +1924,8 @@ MonoBehaviour:
 
     Then Left Click to throw the toy in your hand
 
+    Press Q to drop a held item
+
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -1993,12 +1995,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 189.32843, w: 0}
   m_textInfo:
     textComponent: {fileID: 695643476}
-    characterCount: 91
+    characterCount: 119
     spriteCount: 0
-    spaceCount: 18
-    wordCount: 18
+    spaceCount: 25
+    wordCount: 25
     linkCount: 0
-    lineCount: 6
+    lineCount: 8
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -2784,7 +2786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 285981023, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 285981024, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_Sprite
@@ -2792,7 +2794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 517433706, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1084811421, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_IsActive
