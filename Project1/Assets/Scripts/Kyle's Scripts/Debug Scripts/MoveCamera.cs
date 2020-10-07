@@ -45,6 +45,10 @@ public class MoveCamera : MonoBehaviour
         float horizontalRotate = Input.GetAxis("Mouse X") * Time.deltaTime * horizontalSensitivity;
         float verticalRotate = Input.GetAxis("Mouse Y") * Time.deltaTime * verticalSensitivity;
 
+        //Kyle Grenier (10/7): Clamping mouse input between (-1,1) and mulitplying it by the sensitivity to prevent WebGL issues.
+        horizontalRotate = Mathf.Clamp(horizontalRotate, -1, 1);
+        verticalRotate = Mathf.Clamp(verticalRotate, -1, 1);
+
         if (invertPitch)
             pitch -= verticalRotate;
         else

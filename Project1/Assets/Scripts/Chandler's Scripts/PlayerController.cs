@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
 
+        //Kyle Grenier (10/7): Clamping mouse input between (-1,1) and mulitplying it by the sensitivity to prevent WebGL issues.
+        moveHorizontal = Mathf.Clamp(moveHorizontal, -1, 1);
+        moveVertical = Mathf.Clamp(moveVertical, -1, 1);
+
         //allows the player to move around
         Vector3 move = transform.right * moveHorizontal + transform.forward * moveVertical;
         Controller.Move(move * speed * Time.deltaTime);
