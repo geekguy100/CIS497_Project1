@@ -22,9 +22,9 @@ public class Toy : MonoBehaviour
         grabbable = true;
     }
 
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            grabbable = true;
-    }
+    //private void OnCollisionEnter(Collision col)
+    //{
+    //    if (col.gameObject.layer == LayerMask.NameToLayer("Ground"))
+    //        grabbable = true;
+    //}
 }

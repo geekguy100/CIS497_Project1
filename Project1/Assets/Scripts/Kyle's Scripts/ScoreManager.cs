@@ -29,7 +29,7 @@ public class ScoreManager : Singleton<ScoreManager>
         get { return score; }
         set    
         {
-            if (GameManager.instance.GameOver)
+            if (GameManager.instance.GameOver || !GameManager.instance.gameStarted)
                 return;
 
             score = value;

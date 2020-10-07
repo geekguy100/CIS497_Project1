@@ -78,6 +78,7 @@ public class PickUpObject : MonoBehaviour
         //Is the user holding the grab key, and we're not holding something?
         if (Input.GetKey(grabKey) && grabJoint == null)
         {
+            print("Attempting pull");
             //Attempt to perform a pull or a grab.
             AttemptPull();
         }
@@ -89,6 +90,7 @@ public class PickUpObject : MonoBehaviour
         //Does the user want to throw the held object, and we're holding something?
         else if (Input.GetKeyDown(throwKey) && grabJoint != null)
         {
+            print("Throwing");
             //Apply the throw force.
             Throw();
         }
@@ -148,9 +150,9 @@ public class PickUpObject : MonoBehaviour
         //We hit something! Is it something we can pick up?
         grabbedRigidbody = hit.rigidbody;
 
+        //We cannot pick this up; it either has no rigidbody or is kinematic or the toy has recently been thrown.
         if (grabbedRigidbody == null || grabbedRigidbody.isKinematic || !grabbedRigidbody.GetComponent<Toy>().grabbable)
         {
-            //We cannot pick this up; it either has no rigidbody or is kinematic or the toy has recently been thrown.
             return;
         }
 
@@ -172,6 +174,9 @@ public class PickUpObject : MonoBehaviour
             //or any collider in our parent, which could cause problems.
             foreach (var myCollider in GetComponentsInParent<Collider>())
                 Physics.IgnoreCollision(myCollider, hit.collider, true);
+
+            //Kyle Grenier (10/7): Turn off the collider of the toy so it is easier to handle.
+            //grabbedRigidbody.GetComponent<Collider>().enabled = false;
 
             //Make sure this toy cannot be grabbed until after it's been thrown.
             grabbedRigidbody.GetComponent<Toy>().grabbable = false;
@@ -205,6 +210,9 @@ public class PickUpObject : MonoBehaviour
         {
             Physics.IgnoreCollision(myCollider, grabbedRigidbody.GetComponent<Collider>(), false);
         }
+
+        //Kyle Grenier (10/7): Turn on the collider of the toy once it's out of our hands.
+       // grabbedRigidbody.GetComponent<Collider>().enabled = true;
 
         grabbedRigidbody.GetComponent<Toy>().OnToyDrop();
         grabbedRigidbody = null;

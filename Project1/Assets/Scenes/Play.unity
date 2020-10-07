@@ -2289,6 +2289,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1895221224, guid: ba6ddb2e0afcc5e4ba618f6c4d936ecd, type: 3}
+      propertyPath: grabBreakingForce
+      value: 9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895221224, guid: ba6ddb2e0afcc5e4ba618f6c4d936ecd, type: 3}
+      propertyPath: grabBreakingTorque
+      value: 9999999
+      objectReference: {fileID: 0}
     - target: {fileID: 342654678175852173, guid: ba6ddb2e0afcc5e4ba618f6c4d936ecd,
         type: 3}
       propertyPath: m_Name
