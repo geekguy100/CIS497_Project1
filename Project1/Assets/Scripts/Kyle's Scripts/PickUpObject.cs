@@ -78,7 +78,6 @@ public class PickUpObject : MonoBehaviour
         //Is the user holding the grab key, and we're not holding something?
         if (Input.GetKey(grabKey) && grabJoint == null)
         {
-            print("Attempting pull");
             //Attempt to perform a pull or a grab.
             AttemptPull();
         }
@@ -90,7 +89,6 @@ public class PickUpObject : MonoBehaviour
         //Does the user want to throw the held object, and we're holding something?
         else if (Input.GetKeyDown(throwKey) && grabJoint != null)
         {
-            print("Throwing");
             //Apply the throw force.
             Throw();
         }

@@ -15,6 +15,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Image loadPanel;
     [SerializeField] private float fadeDuration = 3.2f;
 
+    [SerializeField] private GameObject resetPanel;
+
     private void Start()
     {
         loadPanel.gameObject.SetActive(false);
@@ -23,7 +25,21 @@ public class MenuController : MonoBehaviour
     //Starts the coroutine to fade to black and load the scene with given name.
     public void LoadScene(string name)
     {
-        StartCoroutine(FadeAndLoadScene(name));
+        if (name == "Play" && PlayerPrefs.GetInt("Total Wins") > 0)
+            resetPanel.SetActive(true);
+        else
+            StartCoroutine(FadeAndLoadScene(name));
+    }
+
+    public void ResetAndLoad()
+    {
+        PlayerPrefs.DeleteKey("Total Wins");
+        ContinueGame();
+    }
+
+    public void ContinueGame()
+    {
+        StartCoroutine(FadeAndLoadScene("Play"));
     }
 
     private IEnumerator FadeAndLoadScene(string sceneName)

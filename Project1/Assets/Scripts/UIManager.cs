@@ -14,7 +14,10 @@ public class UIManager : Singleton<UIManager>
     [Header("Timer Assets")]
     [SerializeField] private float timer = 60f;
     public TextMeshProUGUI timerText;
+
+    [Header("Scoring Assets")]
     public TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI highscoreText;
 
     [Header("Tutorial Assets")]
     public TextMeshProUGUI movementTutorial;
@@ -22,6 +25,7 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI goalTutorial;
     [SerializeField] private TextMeshProUGUI throwingTutorial;
     [SerializeField] private bool tutorial = false;
+    public bool Tut { get { return tutorial; } }
 
     [Header("Game Status Text")]
     [SerializeField] private GameObject loseText;
@@ -41,7 +45,7 @@ public class UIManager : Singleton<UIManager>
         c.a = 1;
         loadPanel.color = c;
 
-        UpdateScore(0);
+        UpdateScore(0, PlayerPrefs.GetInt("Highscore"));
         timerText.text = "Time: " + timer;
 
         if (tutorial)
@@ -110,15 +114,18 @@ public class UIManager : Singleton<UIManager>
         timerText.text = "Time: " + timer.ToString("f0");
 
         //Make sure the GameManager knows the timer is over, ending the game.
-        if (timer <= 0)
+        //Note that the game also ends when the player reaches the winning score, so make sure
+        //the game is not already over.
+        if (timer <= 0 && !GameManager.instance.GameOver)
         {
             GameManager.instance.GameOver = true;
         }
     }
 
-    public void UpdateScore(int s)
+    public void UpdateScore(int s, int hs)
     {
         scoreText.text = "Score: " + s + "/" + ScoreManager.instance.WinningScore;
+        highscoreText.text = "Highscore: " + hs;
     }
 
     public void Tutorial()

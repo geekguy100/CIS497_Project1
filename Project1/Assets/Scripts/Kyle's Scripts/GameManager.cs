@@ -65,17 +65,7 @@ public class GameManager : Singleton<GameManager>
         {
             gameWon = value;
 
-            //GameOver = value;
-            //^^^ Setting this would also make the game end if the game has been won,
-            //but we want the player to keep striving for a high score even after they picked up the
-            //winning amount of toys.
-            if (gameWon)
-                Debug.Log("Player has reached a winnable score.");
-            else //if gameWon is false, reset GameOver as well.
-            {
-                GameOver = value;
-                Debug.LogWarning("Please don't set GameWon to false by itself; do so my modifying GameOver.");
-            }
+            GameOver = value;
         }
     }
 
@@ -113,7 +103,6 @@ public class GameManager : Singleton<GameManager>
         //For now, I made it restart the current scene.
         if (gameOver && Input.GetKeyDown(restartKey))
         {
-            Debug.Log("Restarting...");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if (!gameOver)

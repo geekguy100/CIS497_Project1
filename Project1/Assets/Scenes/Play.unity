@@ -3097,6 +3097,7 @@ MonoBehaviour:
   timer: 60
   timerText: {fileID: 1815226729}
   scoreText: {fileID: 1495489363}
+  highscoreText: {fileID: 1845488266}
   movementTutorial: {fileID: 0}
   grabbingTutorial: {fileID: 0}
   goalTutorial: {fileID: 0}
@@ -3348,6 +3349,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1845488266 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6520294179748505569, guid: 7efd5898089e9cb4d884d23036cf98ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 2101128232}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1955863786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3557,6 +3570,18 @@ PrefabInstance:
     - target: {fileID: 225023064, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225023065, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
+      propertyPath: m_text
+      value: 'You Lose!
+
+        Press R to continue.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084811423, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
+      propertyPath: m_text
+      value: 'You Win!
+
+        Press R to continue.'
       objectReference: {fileID: 0}
     - target: {fileID: 958049235780218904, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}

@@ -10,7 +10,7 @@ using UnityEngine;
 public class ScoreManager : Singleton<ScoreManager>
 {
     //The score the player must achieve in set time to win.
-    private int winningScore = 20;
+    private int winningScore = 10;
     public int WinningScore
     {
         get
@@ -19,6 +19,20 @@ public class ScoreManager : Singleton<ScoreManager>
         }
     }
 
+    //Total wins of session.
+    private int totalWins = 0;
+    public int TotalWins
+    {
+        get { return totalWins; }
+        set
+        {
+            if (value != totalWins)
+            {
+                totalWins = value;
+                PlayerPrefs.SetInt("Total Wins", totalWins);
+            }
+        }
+    }
 
     //The high score of the player.
     private int highScore;
@@ -33,12 +47,17 @@ public class ScoreManager : Singleton<ScoreManager>
                 return;
 
             score = value;
-            UIManager.instance.UpdateScore(score);
-            if (score >= winningScore && !GameManager.instance.GameWon)
-                GameManager.instance.GameWon = true;
+            
+            //Only increase the highscore if in an actual game, not the tutorial
+            if (score > highScore && !UIManager.instance.Tut)
+                highScore = score;
 
-            if (score > highScore)
-                Debug.Log("Player has a new highscore of " + score);
+            UIManager.instance.UpdateScore(score, highScore);
+            if (score >= winningScore && !GameManager.instance.GameWon)
+            {
+                TotalWins++;
+                GameManager.instance.GameWon = true;
+            }
         }
     }
 
@@ -46,14 +65,30 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         highScore = PlayerPrefs.GetInt("Highscore");
         Debug.Log("Current Highscore: " + highScore);
+
+        //If the tutorial is active, make the winning score 10.
+        if (UIManager.instance.Tut)
+        {
+            winningScore = 10;
+            return;
+        }
+
+        totalWins = PlayerPrefs.GetInt("Total Wins");
+        CalculateWinningScore();
     }
 
     public void GameOver()
     {
-        if (score > highScore)
-        {
-            PlayerPrefs.SetInt("Highscore", score);
-            Debug.Log("Congrats! You achieved a new high score of " + score);
-        }
+        //If the player reached a new highscore, update it in PlayerPrefs.
+        if (highScore > PlayerPrefs.GetInt("Highscore"))
+            PlayerPrefs.SetInt("Highscore", highScore);
+    }
+
+    //Initial score is 10. 
+    //2 more toys are added to the pool on each consecutive win.
+    private void CalculateWinningScore()
+    {
+        winningScore = 10 + (2 * totalWins);
+        Debug.Log("Winning score: 10 + (2 * " + totalWins + ") = " + winningScore);
     }
 }
