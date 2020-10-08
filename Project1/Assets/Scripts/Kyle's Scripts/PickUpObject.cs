@@ -10,6 +10,11 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
+    //Score Sounds
+    private AudioSource playerAudio;
+    public AudioClip[] throwSFXs;
+    private int throwSFX;
+
     //The range from this object at which an object can be picked up.
     [SerializeField] private float grabbingRange = 3f;
 
@@ -69,6 +74,11 @@ public class PickUpObject : MonoBehaviour
         playerCollider.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
+    private void Start()
+    {
+        playerAudio = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         //Don't run if the game hasn't been started or the game is over.
@@ -97,6 +107,8 @@ public class PickUpObject : MonoBehaviour
     //Throw the held object.
     private void Throw()
     {
+        throwSFX = Random.Range(0, throwSFXs.Length);
+
         //Cannot throw if we're not holding anything.
         if (grabbedRigidbody == null)
             return;
@@ -110,8 +122,9 @@ public class PickUpObject : MonoBehaviour
         //We need to drop the body we're holding before we can throw it.
         Drop();
 
-        //Apply the force to the object.
+        //Apply the force to the object. play throw sound
         thrownBody.AddForce(force, ForceMode.Impulse);
+        playerAudio.PlayOneShot(throwSFXs[throwSFX], 1.0f);
     }
 
     //Attempts to pull or pick up the object directly ahead of this object.
