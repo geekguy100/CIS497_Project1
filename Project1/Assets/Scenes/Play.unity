@@ -1829,8 +1829,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282892359
-  m_fontColor: {r: 0.28123888, g: 0.754717, b: 0.28123888, a: 1}
+    rgba: 4281182253
+  m_fontColor: {r: 0.17755428, g: 0.6603774, b: 0.17755428, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4467,7 +4467,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You Lose!
 
-    Press R to continue.'
+    Press R to try again.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -4476,8 +4476,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281019352
-  m_fontColor: {r: 0.8490566, g: 0.17221431, b: 0.17221431, a: 1}
+    rgba: 4278190224
+  m_fontColor: {r: 0.5660378, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4536,10 +4536,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2138071773}
-    characterCount: 30
+    characterCount: 31
     spriteCount: 0
-    spaceCount: 5
-    wordCount: 6
+    spaceCount: 6
+    wordCount: 7
     linkCount: 0
     lineCount: 2
     pageCount: 1

@@ -3129,6 +3129,12 @@ PrefabInstance:
       propertyPath: checkPaddingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1084811423, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
+      propertyPath: m_text
+      value: 'You Win!
+
+        Press R to Try Again'
+      objectReference: {fileID: 0}
     - target: {fileID: 958049235633258453, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
       propertyPath: m_textInfo.characterCount
