@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         //Checks if the player is on the ground
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        //resets the Up/down velocity of the player if the player is on the ground
+       //resets the Up/down velocity of the player if the player is on the ground
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             playerAudio.PlayOneShot(jumpSFX, 1.0f);
         }
-
+       
         //Pulls the player back down to the ground using gravity
         velocity.y += gravity * Time.deltaTime;
         Controller.Move(velocity * Time.deltaTime);
