@@ -9,6 +9,7 @@ TagManager:
   - GoldenToy
   - Roomba
   - Ground
+  - Wall
   layers:
   - Default
   - TransparentFX

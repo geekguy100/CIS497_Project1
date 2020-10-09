@@ -103,7 +103,11 @@ public class GameManager : Singleton<GameManager>
         //For now, I made it restart the current scene.
         if (gameOver && Input.GetKeyDown(restartKey))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //If player won the tutorial, progress to main game.
+            if (UIManager.instance.Tut && gameWon)
+                SceneManager.LoadScene("Play");
+            else
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if (!gameOver)
         {

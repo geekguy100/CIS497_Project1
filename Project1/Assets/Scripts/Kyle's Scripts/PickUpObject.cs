@@ -92,7 +92,9 @@ public class PickUpObject : MonoBehaviour
             AttemptPull();
         }
         //Did the user just press the grab key, and we're holding something?
-        else if (Input.GetKeyDown(dropKey) && grabJoint != null)
+        //Also drop the toy if it becomes grabbable. The only point it would become grabbable again at this point is if it hit a wall.
+        //This is in place to prevent the toy from going out of bounds.
+        else if ((Input.GetKeyDown(dropKey) && grabJoint != null) || (grabbedRigidbody != null && grabbedRigidbody.GetComponent<Toy>().grabbable))
         {
             Drop();
         }
@@ -225,7 +227,10 @@ public class PickUpObject : MonoBehaviour
         //Kyle Grenier (10/7): Turn on the collider of the toy once it's out of our hands.
        // grabbedRigidbody.GetComponent<Collider>().enabled = true;
 
-        grabbedRigidbody.GetComponent<Toy>().OnToyDrop();
+        //Make the toy grabbable again if it's not already.
+        if(!grabbedRigidbody.GetComponent<Toy>().grabbable)
+            grabbedRigidbody.GetComponent<Toy>().OnToyDrop();
+
         grabbedRigidbody = null;
     }
 

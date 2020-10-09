@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4458,11 +4458,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4377747795467193235, guid: e663d6a44a44af54d9fe32ee7b341789,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 4377747795467193244, guid: e663d6a44a44af54d9fe32ee7b341789,
         type: 3}
       propertyPath: m_Name
@@ -4471,17 +4466,17 @@ PrefabInstance:
     - target: {fileID: 4377747795467193245, guid: e663d6a44a44af54d9fe32ee7b341789,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 314.473
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4377747795467193245, guid: e663d6a44a44af54d9fe32ee7b341789,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 159.56375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4377747795467193245, guid: e663d6a44a44af54d9fe32ee7b341789,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4377747795467193245, guid: e663d6a44a44af54d9fe32ee7b341789,
         type: 3}
