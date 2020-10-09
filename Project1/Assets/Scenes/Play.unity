@@ -3925,7 +3925,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'You Lose!
 
-        Press R to continue.'
+        Press R to try again.'
       objectReference: {fileID: 0}
     - target: {fileID: 225023065, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_fontColor.r
