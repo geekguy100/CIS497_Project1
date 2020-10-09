@@ -445,7 +445,6 @@ MonoBehaviour:
   - {fileID: 8158813844559230059, guid: af2482c3a10a243428fb0de5aae4dcfa, type: 3}
   - {fileID: 7690433378944426385, guid: bcb3b4a76dd615f4b8792dbef8f2bb17, type: 3}
   - {fileID: 854129211124243162, guid: 610bbfab2f2c158488c0515370bd0bcc, type: 3}
-  - {fileID: 618360940342653297, guid: 4352239a08b033b47a210fdcafe1d7a4, type: 3}
   finishedSpawning: 0
 --- !u!4 &29225105
 Transform:
