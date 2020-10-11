@@ -31,15 +31,26 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject loseText;
     [SerializeField] private GameObject winText;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject sensitivityPanel;
 
     [Header("Fading Assets")]
     [SerializeField] private Image loadPanel;
     [SerializeField] private float fadeDuration = 5f;
     public bool finishedFading { get; private set; }
 
+    [Header("Other")]
+    [SerializeField] private Slider mouseSlider;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        
+        mouseSlider.value = PlayerPrefs.GetFloat("Mouse Sensitivity");
+        if (mouseSlider.value == 0)
+            mouseSlider.value = mouseSlider.maxValue;
+
         //Make the loadPanel opaque.
         Color c = loadPanel.color;
         c.a = 1;
@@ -57,6 +68,12 @@ public class UIManager : Singleton<UIManager>
             timerText.SetText("Time: INF");
             Tutorial();
         }
+    }
+
+    public void UpdateMouseSensitivity()
+    {
+        FindObjectOfType<CameraController>().sensitivity = mouseSlider.value;
+        PlayerPrefs.SetFloat("Mouse Sensitivity", mouseSlider.value);
     }
 
     // Update is called once per frame
@@ -164,8 +181,14 @@ public class UIManager : Singleton<UIManager>
     public void PauseGame(bool paused)
     {
         if (paused)
+        {
             pauseMenu.SetActive(true);
+            sensitivityPanel.SetActive(true);
+        }
         else
+        {
             pauseMenu.SetActive(false);
+            sensitivityPanel.SetActive(false);
+        }
     }
 }

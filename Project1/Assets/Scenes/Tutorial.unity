@@ -993,6 +993,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &374262657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2638585181405936747, guid: 7efd5898089e9cb4d884d23036cf98ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1021941010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &493686824
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,7 +3080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 285981023, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 285981024, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_Sprite
@@ -3076,7 +3088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 517433706, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1084811421, guid: 7efd5898089e9cb4d884d23036cf98ef, type: 3}
       propertyPath: m_IsActive
@@ -3143,7 +3155,7 @@ PrefabInstance:
     - target: {fileID: 153838183507138912, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 958049235633258453, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
@@ -3375,6 +3387,11 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1490665545835914122, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1707800506227893222, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
       propertyPath: m_IsActive
@@ -3463,31 +3480,81 @@ PrefabInstance:
     - target: {fileID: 1946362466258878764, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1946362466258878767, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2638585181405936747, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638585181405936747, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_Value
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638585181405936747, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1130185660}
+    - target: {fileID: 2638585181405936747, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateMouseSensitivity
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638585181405936747, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3532893952121517329, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5282771455097645657, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5352584497109432144, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352584497109432144, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8023708026972420977, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8516280780097772202, guid: 7efd5898089e9cb4d884d23036cf98ef,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919618870873947737, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919618870873947737, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919618870873947737, guid: 7efd5898089e9cb4d884d23036cf98ef,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3525,6 +3592,12 @@ MonoBehaviour:
 --- !u!1 &1021941014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1946362466258878767, guid: 7efd5898089e9cb4d884d23036cf98ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1021941010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1021941015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1490665545835914122, guid: 7efd5898089e9cb4d884d23036cf98ef,
     type: 3}
   m_PrefabInstance: {fileID: 1021941010}
   m_PrefabAsset: {fileID: 0}
@@ -3680,8 +3753,10 @@ MonoBehaviour:
   loseText: {fileID: 616019701}
   winText: {fileID: 1435928301}
   pauseMenu: {fileID: 1021941014}
+  sensitivityPanel: {fileID: 1021941015}
   loadPanel: {fileID: 1025351715}
   fadeDuration: 3.5
+  mouseSlider: {fileID: 374262657}
 --- !u!4 &1130185661
 Transform:
   m_ObjectHideFlags: 0

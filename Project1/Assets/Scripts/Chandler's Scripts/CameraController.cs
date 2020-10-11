@@ -11,9 +11,15 @@ public class CameraController : MonoBehaviour
     public float sensitivity = 500f;
     public Transform playerBody;
 
-    void Start()
+    private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        sensitivity = PlayerPrefs.GetFloat("Mouse Sensitivity", sensitivity);
+        if (sensitivity == 0f)
+        {
+            sensitivity = 500f;
+            PlayerPrefs.SetFloat("Mouse Sensitivity", sensitivity);
+        }
+
     }
 
     // Update is called once per frame
@@ -25,10 +31,6 @@ public class CameraController : MonoBehaviour
 
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
-        //Kyle Grenier (10/07): Clamping mouse deltas to prevent sensitivity issues on WebGL.
-        //Also had to relocate sensitivity and Time.deltaTime scalars so ONLY the mouse input would be clamped.
-        mouseX = Mathf.Clamp(mouseX, -1, 1);
-        mouseY = Mathf.Clamp(mouseY, -1, 1);
 
         xRotation -= mouseY * sensitivity * Time.deltaTime;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
